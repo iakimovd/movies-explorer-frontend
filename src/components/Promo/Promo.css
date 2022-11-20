@@ -1,0 +1,36 @@
+.promo {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 524px;
+  background: rgba(7, 48, 66, 1);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.promo__title {
+  display: block;
+  position: absolute;
+  top: 242px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 730px;
+  min-height: 116px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  margin: auto;
+}
+
+.promo__logo {
+  position: absolute;
+  top: 242px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 320px;
+  height: 320px;
+}

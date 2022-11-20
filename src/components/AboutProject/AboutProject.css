@@ -1,0 +1,107 @@
+.about-project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 130px;
+  padding-bottom: 90px;
+  background: rgba(32, 32, 32, 1);
+}
+
+.about-project__header {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  align-self: flex-start;
+  border-bottom: 1px solid rgba(218, 218, 218, 1);
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 23px;
+}
+
+.about-project__table {
+  display: flex;
+}
+
+.about-project__table-cell {
+  list-style-type: none;
+  width: 540px;
+  margin-right: 40px;
+}
+
+.about-project__table-cell:last-child {
+  margin-right: 0;
+}
+
+.about-project__table-cell__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 26px;
+  padding: 0;
+}
+
+.about-project__table-cell__text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.about-project__visual-table {
+  display: flex;
+  margin-top: 110px;
+  color: #FFFFFF;
+}
+
+.about-project__visual-table-cell {
+  list-style-type: none;
+  width: 228px;
+  background: rgba(61, 220, 132, 1);
+}
+.about-project__visual-table-cell:last-child {
+  background: rgba(32, 32, 32, 1);
+  width: 912px;
+}
+
+.about-project__visual-table-cell__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  /* background: rgba(61, 220, 132, 1); */
+  color: #000000;
+}
+
+.about-project__visual-table-cell__title:last-child {
+  /* background: rgba(32, 32, 32, 1); */
+  color: #ffffff;
+  background: rgba(48, 48, 48, 1);
+
+}
+
+.about-project__visual-table__text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #8b8b8b;
+}
