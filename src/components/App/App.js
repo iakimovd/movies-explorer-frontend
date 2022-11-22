@@ -9,6 +9,8 @@ import Footer from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 // import { Login } from './Login';
 // import { Register } from './Register';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -24,8 +26,6 @@ function App() {
     <div className="page">
       {/* <CurrentUserContext.Provider > */}
 
-
-
       <Switch>
 
         <Route exact path="/">
@@ -40,9 +40,18 @@ function App() {
           <Footer />
         </Route>
 
+        <Route path="/saved-movies">
+          <Header />
+          <SavedMovies />
+          <Footer />
+        </Route>
+
+        <Route path="/profile">
+          <Header />
+          <Profile/>
+        </Route>
+
       </Switch>
-
-
 
       {/* </CurrentUserContext.Provider> */}
     </div >

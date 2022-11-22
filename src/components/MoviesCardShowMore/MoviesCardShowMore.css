@@ -1,0 +1,29 @@
+.movies-card-show-more {
+  background: rgba(32, 32, 32, 1);
+  padding-top: 50px;
+  padding-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movies-card-show-more__button {
+  background: rgba(47, 47, 47, 1);
+  border-radius: 6px;
+  width: 320px;
+  height: 36px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.movies-card-show-more__button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
