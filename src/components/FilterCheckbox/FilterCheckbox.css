@@ -69,7 +69,7 @@
 .search-filter__checkbox:checked + .search-filter__new-checkbox::after {
   left: 17px;
   background: rgba(43, 224, 128, 1);
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
 }
 
 .search-filter__checkbox + .search-filter__new-checkbox {
@@ -82,4 +82,16 @@
 
 .search-filter__checkbox:checked + .search-filter__new-checkbox::before {
   color: #fff;
+}
+
+@media screen and (max-width: 400px) {
+  .search-filter {
+    padding-top: 43px;
+    padding-bottom: 51px;
+  }
+
+  .search-filter__text {
+    font-size: 11px;
+    line-height: 18px;
+  }
 }

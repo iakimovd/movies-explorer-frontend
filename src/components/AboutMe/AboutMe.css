@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: auto;
 }
 
 .about-me__header {
@@ -30,6 +31,8 @@
   max-width: 1140px;
   width: 100%;
   margin-top: 66px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about-me__info {
@@ -73,7 +76,7 @@
   color: #ffffff;
 }
 
-.about-me__link {
+.about-me__github-link {
   padding: 0;
   margin-top: 100px;
   font-family: "Inter";
@@ -85,9 +88,95 @@
   text-decoration: none;
 }
 
+.about-me__github-link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
 .about-me__photo {
   border-radius: 10px;
   width: 270px;
   height: 327px;
   object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+  .about-me {
+    max-width: 668px;
+    padding-top: 90px;
+  }
+
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__text {
+    font-size: 12px;
+    line-height: 18px;
+    max-width: 364px;
+  }
+
+  .about-me__photo {
+    border-radius: 10px;
+    width: 255px;
+    height: 307px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .about-me {
+    max-width: 292px;
+    padding-top: 70px;
+  }
+
+  .about-me__header {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+
+  .about-me__container {
+    flex-direction: column;
+    align-items: center;
+    flex-flow: column-reverse;
+    margin-top: 60px;
+  }
+
+  .about-me__photo {
+    max-width: 292px;
+    width: 100%;
+    height: 352px;
+    object-fit: cover;
+  }
+
+  .about-me__name {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__profession {
+    margin: 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__text {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__github-link {
+    margin: 0;
+  }
 }

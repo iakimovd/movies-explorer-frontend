@@ -10,7 +10,8 @@
 .movies-card-show-more__button {
   background: rgba(47, 47, 47, 1);
   border-radius: 6px;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   height: 36px;
   font-family: "Inter";
   font-style: normal;
@@ -26,4 +27,15 @@
 .movies-card-show-more__button:hover {
   opacity: 0.5;
   transition: 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 400px) {
+  .movies-card-show-more {
+    padding-top: 76px;
+    padding-bottom: 159px;
+  }
+
+  .movies-card-show-more__button {
+    max-width: 240px;
+  }
 }

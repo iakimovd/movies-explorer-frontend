@@ -1,38 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 import './Header.css';
 import headerLogo from '../../images/header-logo.svg';
-import { Link, Switch, Route } from 'react-router-dom';
+import Navigation from "../Navigation/Navigation";
 
-export function Header({ onLogout, email }) {
+import { Link, Switch, Route, useLocation, useHistory } from 'react-router-dom';
+
+export default function Header() {
+  const location = useLocation();
+  const history = useHistory();
+  // const loggedIn = true;
+
+  const [isActive, setIsActive] = useState(false);
+
+  function handleLogin() {
+
+    history.push("/signin");
+  }
+
+  function handleBurgerButton() {
+    setIsActive(!isActive);
+  }
+
   return (
-    <header className="header">
-      <img
-        src={headerLogo}
-        className="header__logo"
-        alt="Логотип"
-      />
 
-      <div className="header__auth-panel">
+    <>
 
-        <p className="header__user-email">
-          {email}
-        </p>
+      {location.pathname === '/' &&
+        (<header className={`header header_theme_${location.pathname === '/' ? 'default' : 'dark'
+          }`}>
 
-        <Switch>
-          <Route path="/sign-up">
-            <Link className="header__link" to="/sign-in" >Войти</Link>
-          </Route>
+          <Link to='/' className="header__logo">
+            <img src={headerLogo} alt="Логотип" />
+          </Link>
 
-          <Route exact path="/">
-            <Link className="header__logout-link" to="/sign-in" onClick={onLogout}>Выйти</Link>
-          </Route>
+          <div className="header__navigation">
 
-          <Route path="/sign-in">
-            <Link className="header__link" to="/sign-up" >Регистрация</Link>
-          </Route>
-        </Switch>
+            <Link to="/signup" className="header__link">
+              Регистрация
+            </Link>
 
-      </div>
-    </header>
+            <button onClick={handleLogin} className="header__link-button">
+              Войти
+            </button>
+
+          </div>
+
+        </header>)
+      }
+
+      {(location.pathname === '/movies' ||
+        location.pathname === '/saved-movies' ||
+        location.pathname === '/profile') &&
+        (<header className={`header header_theme_${location.pathname === '/' ? 'default' : 'dark'
+          }`}>
+
+          <div className="header__container">
+
+            <Link to='/' className="header__logo">
+              <img src={headerLogo} alt="Логотип" />
+            </Link>
+
+            <div className="header__movies-navigation">
+              <Link to="/movies" className="header__nav-link">
+                Фильмы
+              </Link>
+
+              <Link to="/saved-movies" className="header__nav-link">
+                Сохранённые фильмы
+              </Link>
+            </div>
+
+            <div className="header__account-container">
+              <Link to="/profile" className="header__account-link">
+                Аккаунт
+              </Link>
+
+              <button className="header__account-button"></button>
+            </div>
+
+            <button className="header__burger-menu-button"
+              type="button"
+              onClick={handleBurgerButton}>
+            </button>
+            {isActive ? <Navigation handleBurgerButton={handleBurgerButton}/> : ''}
+          </div>
+        </header>)
+      }
+
+    </>
   )
 }

@@ -1,0 +1,149 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 396px;
+  width: 100%;
+  margin: auto;
+}
+
+.register__container {
+  margin-top: 70px;
+}
+
+.register__logo {
+  align-self: start;
+}
+
+.register__title {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+}
+
+.register__form {
+  max-width: 396px;
+  width: 100%;
+}
+
+.register__fieldset {
+  max-width: 396px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.register__fieldset:last-of-type {
+  padding-bottom: 0;
+}
+
+.register__label {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8b8b8b;
+}
+
+.register__input {
+  padding-left: 15px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ffffff;
+  border: none;
+  background: #2f2f2f;
+  border-radius: 8px;
+  /* max-width: 396px;
+  width: 100%; */
+  height: 46px;
+}
+
+.register__button {
+  padding: 0;
+  margin-top: 90px;
+  margin-bottom: 16px;
+  width: 396px;
+  /* width: 100%; */
+  height: 45px;
+  background: #4285f4;
+  border-radius: 3px;
+  border: none;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.register__button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.register__signin {
+  display: flex;
+  justify-content: center;
+}
+
+.register__signin-ask {
+  padding: 0;
+  margin: 0;
+  margin-right: 6px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #8b8b8b;
+}
+
+.register__login-link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #4285f4;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 400px) {
+  .register__title {
+    text-align: center;
+  }
+
+  .register__button {
+    width: 260px;
+    margin-top: 180px;
+    margin-bottom: 14px;
+  }
+
+  .register__signin-ask {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .register__login-link {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

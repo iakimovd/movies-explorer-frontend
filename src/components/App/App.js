@@ -6,13 +6,14 @@ import { Route, Switch } from 'react-router-dom';
 // import api from "../utils/Api";
 
 import Footer from '../Footer/Footer';
-import { Header } from '../Header/Header';
+import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
-// import { Login } from './Login';
-// import { Register } from './Register';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 // import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 // import { InfoTooltip } from './InfoTooltip/InfoTooltip';
 // import * as auth from '../utils/Auth';
@@ -34,6 +35,14 @@ function App() {
           <Footer />
         </Route>
 
+        <Route path="/signup">
+          <Register />
+        </Route>
+
+        <Route path="/signin">
+          <Login />
+        </Route>
+
         <Route path="/movies">
           <Header />
           <Movies />
@@ -48,7 +57,11 @@ function App() {
 
         <Route path="/profile">
           <Header />
-          <Profile/>
+          <Profile />
+        </Route>
+
+        <Route path="/*">
+          <NotFoundPage />
         </Route>
 
       </Switch>

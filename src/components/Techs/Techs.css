@@ -6,6 +6,7 @@
   align-items: center;
   padding-top: 100px;
   padding-bottom: 100px;
+  margin: auto;
 }
 
 .techs__header {
@@ -83,4 +84,72 @@
   color: #ffffff;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .techs {
+    max-width: 768px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .techs__list-item {
+    list-style-type: none;
+    background: #303030;
+    border-radius: 10px;
+    width: 84px;
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .techs__list-item__text {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .techs {
+    max-width: 284px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .techs__header {
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 28px;
+  }
+
+  .techs__sub-header {
+    margin-top: 60px;
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .techs__description {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .techs__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

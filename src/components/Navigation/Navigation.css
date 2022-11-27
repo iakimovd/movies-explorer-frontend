@@ -1,0 +1,100 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  max-width: 520px;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: rgba(32, 32, 32, 1);
+  top: 0;
+  right: 0;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navigation__menu-close-button {
+  padding: 0;
+  background-image: url(../../images/menu-close-button.svg);
+  background-color: rgba(32, 32, 32, 1);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 22px;
+  margin-right: 22px;
+}
+
+.navigation__menu-close-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.navigation__movies-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 112px;
+  margin-bottom: 630px;
+}
+
+.navigation__nav-link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navigation__account-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.navigation__account-link {
+  position: relative;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__account-button {
+  background-image: url(../../images/account-icon.svg);
+  background-color: #313131;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__movies-nav {
+    margin-bottom: 454px;
+  }
+}

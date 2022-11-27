@@ -29,6 +29,19 @@
   margin-right: 40px;
 }
 
+.nav-tab__link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
 .nav-tab__link:last-child {
   margin-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-tab__link {
+    font-size: 11px;
+    line-height: 16px;
+    margin-right: 24px;
+  }
 }
