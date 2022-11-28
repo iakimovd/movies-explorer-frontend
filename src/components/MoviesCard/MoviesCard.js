@@ -18,7 +18,7 @@ function MoviesCard({ title, duration, link, isLiked }) {
           <h3 className="movies-card__title">{title}</h3>
           <p className="movies-card__duration">{duration}</p>
         </div>
-        <div className={cardLikeButtonClassName} ></div>
+        <button className={cardLikeButtonClassName} ></button>
       </div>
     </li>
   )

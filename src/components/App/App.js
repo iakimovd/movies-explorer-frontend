@@ -1,6 +1,6 @@
 import React from 'react';
 // import React, { useEffect, useState, useCallback } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation, } from 'react-router-dom';
 // import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 // import api from "../utils/Api";
@@ -22,17 +22,18 @@ import './App.css';
 function App() {
   // const [currentUser, setCurrentUser] = useState(null);
   // const history = useHistory();
+  const location = useLocation();
 
   return (
     <div className="page">
       {/* <CurrentUserContext.Provider > */}
 
+      <Header />
+
       <Switch>
 
         <Route exact path="/">
-          <Header />
           <Main />
-          <Footer />
         </Route>
 
         <Route path="/signup">
@@ -44,19 +45,14 @@ function App() {
         </Route>
 
         <Route path="/movies">
-          <Header />
           <Movies />
-          <Footer />
         </Route>
 
         <Route path="/saved-movies">
-          <Header />
           <SavedMovies />
-          <Footer />
         </Route>
 
         <Route path="/profile">
-          <Header />
           <Profile />
         </Route>
 
@@ -66,9 +62,59 @@ function App() {
 
       </Switch>
 
+      {location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies" ?
+        <Footer /> : ''}
+
       {/* </CurrentUserContext.Provider> */}
     </div >
   );
+
+  // return (
+  //   <div className="page">
+  //     {/* <CurrentUserContext.Provider > */}
+
+  //     <Switch>
+
+  //       <Route exact path="/">
+  //         <Header />
+  //         <Main />
+  //         <Footer />
+  //       </Route>
+
+  //       <Route path="/signup">
+  //         <Register />
+  //       </Route>
+
+  //       <Route path="/signin">
+  //         <Login />
+  //       </Route>
+
+  //       <Route path="/movies">
+  //         <Header />
+  //         <Movies />
+  //         <Footer />
+  //       </Route>
+
+  //       <Route path="/saved-movies">
+  //         <Header />
+  //         <SavedMovies />
+  //         <Footer />
+  //       </Route>
+
+  //       <Route path="/profile">
+  //         <Header />
+  //         <Profile />
+  //       </Route>
+
+  //       <Route path="/*">
+  //         <NotFoundPage />
+  //       </Route>
+
+  //     </Switch>
+
+  //     {/* </CurrentUserContext.Provider> */}
+  //   </div >
+  // );
 }
 
 export default App;

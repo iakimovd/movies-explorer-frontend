@@ -37,7 +37,7 @@
   text-align: center;
   color: #8b8b8b;
   border: none;
-  outline: none;
+  /* outline: none; */
 }
 
 .search__button {
@@ -58,7 +58,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .search {
     padding-top: 98px;
     max-width: 292px;

@@ -6,7 +6,7 @@ function SearchForm(onSubmit) {
     <section className="search">
       <form className="search__form"
         name="search"
-        noValidate
+        // noValidate
         onSubmit={onSubmit}>
         <input
           className="search__input"

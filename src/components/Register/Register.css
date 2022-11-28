@@ -10,6 +10,10 @@
 
 .register__container {
   margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .register__logo {
@@ -17,6 +21,7 @@
 }
 
 .register__title {
+  align-self: start;
   margin-top: 40px;
   margin-bottom: 40px;
   font-family: "Inter";
@@ -127,8 +132,15 @@
 }
 
 @media screen and (max-width: 400px) {
+  .register__logo {
+    margin: auto;
+  }
+
   .register__title {
+    align-self: center;
     text-align: center;
+    margin-top: 50px;
+    margin-bottom: 80px;
   }
 
   .register__button {
