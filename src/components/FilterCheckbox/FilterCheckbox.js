@@ -15,10 +15,10 @@ function FilterCheckbox() {
       <input
         className="search-filter__checkbox"
         type="checkbox"
-        checked={checked}
+        checked={!checked}
         onChange={handleCheckbox}
       />
-      <span className="search-filter__new-checkbox"></span>
+      {/* <span className="search-filter__new-checkbox"></span> */}
       <span className="search-filter__text">Короткометражки</span>
     </div>
   )

@@ -4,8 +4,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  /* padding-top: 100px; */
+  /* padding-bottom: 100px; */
+  padding: 100px 30px;
   margin: auto;
 }
 
@@ -88,9 +89,9 @@
 
 @media screen and (max-width: 800px) {
   .techs {
-    max-width: 768px;
-    padding-left: 50px;
-    padding-right: 50px;
+    max-width: 668px;
+    /* padding-left: 50px; */
+    /* padding-right: 50px; */
     padding-top: 90px;
     padding-bottom: 90px;
   }
@@ -128,11 +129,13 @@
 
 @media screen and (max-width: 400px) {
   .techs {
-    max-width: 284px;
-    padding-left: 18px;
-    padding-right: 18px;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    max-width: 320px;
+    /* width: 100%; */
+    /* padding-left: 18px; */
+    /* padding-right: 18px; */
+    /* padding-top: 70px; */
+    /* padding-bottom: 70px; */
+    padding: 70px 10px;
   }
 
   .techs__header {

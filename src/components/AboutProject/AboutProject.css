@@ -3,8 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 130px;
-  padding-bottom: 90px;
+  /* padding-top: 130px; */
+  /* padding-bottom: 90px; */
+  padding: 130px 30px 90px;
   background: rgba(32, 32, 32, 1);
   max-width: 1140px;
   margin: auto;
@@ -134,8 +135,9 @@
 @media screen and (max-width: 600px) {
   .about-project {
     max-width: 284px;
-    padding-top: 70px;
-    padding-bottom: 70px;
+    /* padding-top: 70px; */
+    /* padding-bottom: 70px; */
+    padding: 70px 0;
   }
 
   .about-project__header {

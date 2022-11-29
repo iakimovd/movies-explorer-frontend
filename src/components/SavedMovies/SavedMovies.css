@@ -2,3 +2,15 @@
   background: rgba(32, 32, 32, 1);
   min-height: 894px;
 }
+
+@media screen and (max-width: 900px) {
+  .saved-movies {
+    padding-bottom: 250px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .saved-movies {
+    padding-bottom: 245px;
+  }
+}

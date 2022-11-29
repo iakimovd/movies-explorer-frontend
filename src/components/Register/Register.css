@@ -131,7 +131,7 @@
   text-decoration: none;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   .register__logo {
     margin: auto;
   }

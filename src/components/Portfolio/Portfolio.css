@@ -1,6 +1,7 @@
 .portfolio {
-  padding-top: 100px;
-  padding-bottom: 204px;
+  /* padding-top: 100px; */
+  /* padding-bottom: 204px; */
+  padding: 100px 30px 204px;
   background: rgba(32, 32, 32, 1);
   display: flex;
   flex-direction: column;
@@ -84,8 +85,9 @@
 @media screen and (max-width: 400px) {
   .portfolio {
     max-width: 292px;
-    padding-top: 70px;
-    padding-bottom: 149px;
+    /* padding-top: 70px; */
+    /* padding-bottom: 149px; */
+    padding: 70px 0 149px;
   }
 
   .portfolio__header {

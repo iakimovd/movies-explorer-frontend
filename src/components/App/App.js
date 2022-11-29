@@ -30,37 +30,41 @@ function App() {
 
       <Header />
 
-      <Switch>
+      <main className="main">
 
-        <Route exact path="/">
-          <Main />
-        </Route>
+        <Switch>
 
-        <Route path="/signup">
-          <Register />
-        </Route>
+          <Route exact path="/">
+            <Main />
+          </Route>
 
-        <Route path="/signin">
-          <Login />
-        </Route>
+          <Route path="/signup">
+            <Register />
+          </Route>
 
-        <Route path="/movies">
-          <Movies />
-        </Route>
+          <Route path="/signin">
+            <Login />
+          </Route>
 
-        <Route path="/saved-movies">
-          <SavedMovies />
-        </Route>
+          <Route path="/movies">
+            <Movies />
+          </Route>
 
-        <Route path="/profile">
-          <Profile />
-        </Route>
+          <Route path="/saved-movies">
+            <SavedMovies />
+          </Route>
 
-        <Route path="/*">
-          <NotFoundPage />
-        </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
 
-      </Switch>
+          <Route path="/*">
+            <NotFoundPage />
+          </Route>
+
+        </Switch>
+
+      </main>
 
       {location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies" ?
         <Footer /> : ''}
