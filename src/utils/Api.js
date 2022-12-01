@@ -96,18 +96,18 @@ export class Api {
   }
 }
 
-const api = new Api({
-  baseUrl: 'https://api.mesto.project.nomoredomains.icu',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
-
 // const api = new Api({
-//   baseUrl: 'http://localhost:4000',
+//   baseUrl: 'https://api.mesto.project.nomoredomains.icu',
 //   headers: {
 //     'Content-Type': 'application/json'
 //   }
 // });
+
+const api = new Api({
+  baseUrl: 'http://localhost:4000',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 
 export default api;

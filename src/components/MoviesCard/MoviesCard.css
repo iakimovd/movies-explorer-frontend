@@ -45,6 +45,9 @@
   font-size: 13px;
   line-height: 16px;
   color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .movies-card__duration {
