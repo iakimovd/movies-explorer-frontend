@@ -1,0 +1,185 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 70px;
+  margin: 0 auto;
+}
+
+.header__logo:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_theme_dark {
+  background-color: #202020;
+}
+
+.header_theme_default {
+  background-color: #073042;
+}
+
+.header__logo {
+  margin: 0;
+  padding: 0;
+}
+
+.header__link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header__link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__movies-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header__nav-link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header__nav-link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__account-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.header__account-link {
+  position: relative;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.header__account-link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__link-button {
+  margin-left: 30px;
+  width: 76px;
+  height: 32px;
+  background: #3ddc84;
+  border-radius: 3px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+}
+
+.header__link-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__account-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__account-button {
+  background-image: url(../../images/account-icon.svg);
+  background-color: #313131;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__account-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.header__burger-menu-button {
+  padding: 0;
+  background-image: url(../../images/menu-button.svg);
+  background-color: rgba(32, 32, 32, 1);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: none;
+}
+
+.header__burger-menu-button:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 769px) {
+  .header {
+    padding: 18px 30px;
+  }
+
+  .header__movies-navigation {
+    display: none;
+  }
+  .header__account-container {
+    display: none;
+  }
+  .header__burger-menu-button {
+    display: flex;
+    /* visibility: visible; */
+    /* opacity: 1; */
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    padding: 18px 14px;
+  }
+}

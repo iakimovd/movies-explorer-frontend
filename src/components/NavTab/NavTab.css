@@ -1,0 +1,47 @@
+.nav-tab {
+  display: flex;
+  flex-direction: row;
+  background: rgba(39, 39, 39, 1);
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.nav-tab__container {
+  margin: 0 auto;
+}
+
+.nav-tab__links {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.nav-tab__link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  align-items: center;
+  text-decoration-line: underline;
+  color: #ffffff;
+  list-style-type: none;
+  margin-right: 40px;
+}
+
+.nav-tab__link:hover {
+  opacity: 0.5;
+  transition: 0.5s ease-in-out;
+}
+
+.nav-tab__link:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .nav-tab__link {
+    font-size: 11px;
+    line-height: 16px;
+    margin-right: 24px;
+  }
+}

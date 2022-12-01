@@ -1,0 +1,8 @@
+.page {
+  position: relative;
+  margin: 0 auto;
+  background: rgba(32, 32, 32, 1);
+  font-family: 'Inter', Arial, sans-serif;
+  min-height: 100vh;
+  color: white;
+}
