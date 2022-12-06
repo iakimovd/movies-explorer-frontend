@@ -1,20 +1,23 @@
 import React from "react";
 import './Movies.css';
 import SearchForm from "../SearchForm/SearchForm";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-// import Preloader from "../Preloader/Preloader";
+import Preloader from "../Preloader/Preloader";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { movies } from "../../utils/constants";
-import MoviesCardShowMore from "../MoviesCardShowMore/MoviesCardShowMore";
 
-function Movies() {
+
+function Movies({ movies, renderedMovies, showMoreMovies, isLiked, isLoading, onSave, onDelete, onSearch, checkboxValue, onChangeCheckbox }) {
   return (
     <main className="movies">
-      <SearchForm />
-      <FilterCheckbox />
-      {/* <Preloader /> */}
-      <MoviesCardList movies={movies} />
-      <MoviesCardShowMore />
+      <SearchForm onSearch={onSearch} checkboxValue={checkboxValue} onChangeCheckbox={onChangeCheckbox} />
+      {isLoading ?
+        (
+          <Preloader />
+        )
+        : (
+          <MoviesCardList movies={movies} renderedMovies={renderedMovies} showMoreMovies={showMoreMovies} onSave={onSave} onDelete={onDelete} isLiked={isLiked} />
+        )
+      }
+
     </main>
   );
 }

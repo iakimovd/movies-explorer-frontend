@@ -1,17 +1,13 @@
 import React from "react";
 import './SavedMovies.css';
 import SearchForm from "../SearchForm/SearchForm";
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { savedMovies } from "../../utils/constants";
 
-
-function SavedMovies() {
+function SavedMovies({ movies, isLiked, onSave, onDelete, onSearch }) {
   return (
     <main className="saved-movies">
-      <SearchForm />
-      <FilterCheckbox />
-      <MoviesCardList movies={savedMovies} />
+      <SearchForm onSearch={onSearch}/>
+      <MoviesCardList movies={movies} onSave={onSave} onDelete={onDelete} isLiked={isLiked} />
     </main>
   );
 }

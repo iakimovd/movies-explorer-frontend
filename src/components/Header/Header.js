@@ -3,12 +3,11 @@ import './Header.css';
 import headerLogo from '../../images/header-logo.svg';
 import Navigation from "../Navigation/Navigation";
 
-import { Link, Switch, Route, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
   const location = useLocation();
   const history = useHistory();
-  // const loggedIn = true;
 
   const [isActive, setIsActive] = useState(false);
 
@@ -26,27 +25,57 @@ export default function Header() {
     <>
 
       {location.pathname === '/' &&
-        (<header className={`header header_theme_${location.pathname === '/' ? 'default' : 'dark'
-          }`}>
+        (!isLoggedIn ?
+          (<header className={`header header_theme_${location.pathname === '/' ? 'default' : 'dark'
+            }`}>
 
-          <Link to='/' className="header__logo">
-            <img src={headerLogo} alt="Логотип" />
-          </Link>
-
-          <div className="header__navigation">
-
-            <Link to="/signup" className="header__link">
-              Регистрация
+            <Link to='/' className="header__logo">
+              <img src={headerLogo} alt="Логотип" />
             </Link>
 
-            <button onClick={handleLogin} className="header__link-button">
-              Войти
-            </button>
+            <div className="header__navigation">
 
-          </div>
+              <Link to="/signup" className="header__link">
+                Регистрация
+              </Link>
 
-        </header>)
-      }
+              <button onClick={handleLogin} className="header__link-button">
+                Войти
+              </button>
+
+            </div>
+
+          </header>)
+          :
+          (<header className={`header header_theme_${location.pathname === '/' ? 'default' : 'dark'
+            }`}>
+
+            <Link to='/' className="header__logo">
+              <img src={headerLogo} alt="Логотип" />
+            </Link>
+
+            <div className="header__movies-navigation">
+
+              <Link to="/movies" className="header__nav-link">
+                Фильмы
+              </Link>
+
+              <Link to="/saved-movies" className="header__nav-link">
+                Сохранённые фильмы
+              </Link>
+
+            </div>
+
+            <div className="header__account-container">
+              <Link to="/profile" className="header__account-link">
+                Аккаунт
+              </Link>
+
+              <button className="header__account-button"></button>
+            </div>
+
+          </header>)
+        )}
 
       {(location.pathname === '/movies' ||
         location.pathname === '/saved-movies' ||
@@ -82,7 +111,7 @@ export default function Header() {
               type="button"
               onClick={handleBurgerButton}>
             </button>
-            {isActive ? <Navigation handleBurgerButton={handleBurgerButton}/> : ''}
+            {isActive ? <Navigation handleBurgerButton={handleBurgerButton} /> : ''}
           </div>
         </header>)
       }
