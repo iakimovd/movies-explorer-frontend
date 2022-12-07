@@ -86,26 +86,19 @@ export class MainApi {
   }
 }
 
-// changeLikeCardStatus(id, isLiked) {
-//   return fetch(`${this._url}/movies/${id}/likes`, {
-//     method: (isLiked ? "PUT" : "DELETE"),
-//     headers: this._injectBearerToken(this._headers),
-//   })
-//     .then(this._returnFetchResult);
-// }
-
-// const mainApi = new MainApi({
-//   baseUrl: 'https://api.mesto.project.nomoredomains.icu',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   }
-// });
 
 const mainApi = new MainApi({
-  baseUrl: 'http://localhost:4000',
+  baseUrl: 'https://api.diplom.movies.nomoredomains.icu',
   headers: {
     'Content-Type': 'application/json'
   }
 });
+
+// const mainApi = new MainApi({
+//   baseUrl: 'http://localhost:4000',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   }
+// });
 
 export default mainApi;

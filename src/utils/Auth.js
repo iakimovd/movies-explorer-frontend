@@ -1,5 +1,5 @@
-// export const BASE_URL = "https://api.mesto.project.nomoredomains.icu";
-export const BASE_URL = "http://localhost:4000";
+export const BASE_URL = "https://api.diplom.movies.nomoredomains.icu";
+// export const BASE_URL = "http://localhost:4000";
 
 const returnFetchResult = (res) => {
   if (res.ok) {
