@@ -16,5 +16,5 @@ Backend: https://api.diplom.movies.nomoredomains.icu
 
 ---
 
-Ссылка на пул реквест level-3: 
+Ссылка на пул реквест level-3: https://github.com/iakimovd/movies-explorer-frontend/pull/2
 
