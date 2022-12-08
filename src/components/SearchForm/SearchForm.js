@@ -6,12 +6,28 @@ import { useLocation } from 'react-router-dom';
 function SearchForm({ onSearch }) {
   const location = useLocation();
 
-
   const [searchValue, setSearchValue] = useState('');
   const [checkboxValue, setCheckboxValue] = useState(false);
 
   useEffect(() => {
     if (location.pathname === '/movies') {
+
+      const checkbox = localStorage.getItem('checkboxValue');
+      const search = localStorage.getItem('searchValue');
+
+      if (search) {
+        setSearchValue(search);
+      }
+      if (checkbox === true) {
+        setCheckboxValue(true);
+      } else {
+        setCheckboxValue(false);
+      }
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname === '/saved-movies') {
 
       const checkbox = localStorage.getItem('checkboxValue');
       const search = localStorage.getItem('searchValue');

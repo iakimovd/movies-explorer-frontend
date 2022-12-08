@@ -60,7 +60,7 @@ function Register({ onRegister }) {
               maxLength="30"
               required
               pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
-              value={values.name}
+              value={values.name || ''}
               onChange={handleChange}
             />
             <span className="register__error">{errors.name || ''}</span>
@@ -75,7 +75,7 @@ function Register({ onRegister }) {
               placeholder="E-mail"
               required
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              value={values.email}
+              value={values.email || ''}
               onChange={handleChange}
             />
             <span className="register__error">{errors.email || ''}</span>
@@ -89,7 +89,7 @@ function Register({ onRegister }) {
               name="password"
               placeholder="Пароль"
               required
-              value={values.password}
+              value={values.password || ''}
               onChange={handleChange}
             />
             <span className="register__error">{errors.password || ''}</span>

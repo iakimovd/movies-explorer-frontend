@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -20,7 +19,6 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import * as auth from '../../utils/Auth';
 import useWindowSize from '../../hooks/useWindowSize';
 import './App.css';
-
 
 function App() {
 
@@ -82,8 +80,9 @@ function App() {
       .then(() => {
         setIsInfoTooltipPopupOpen(true);
         setIsSuccess(true);
-        history.push("/signin");
+        onLogin({ email, password });
       })
+      .then(() => history.push("/movies"))
       .catch((err) => {
         setIsInfoTooltipPopupOpen(true);
         setIsSuccess(false);
