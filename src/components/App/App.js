@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Switch, useLocation, useHistory } from 'react-router-dom';
+import { Route, Redirect, Switch, useLocation, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import mainApi from '../../utils/MainApi';
@@ -22,7 +22,6 @@ import './App.css';
 
 function App() {
 
-  // console.log(localStorage);
 
   // Массив фильмов
   const [initialMovies, setInitialMovies] = useState([]);
@@ -47,7 +46,7 @@ function App() {
   // Попап с ошибками
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
 
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // Прелоадер
   const [isloading, setIsLoading] = React.useState(false);
@@ -59,20 +58,39 @@ function App() {
   const history = useHistory();
   const location = useLocation();
 
+  // Получить данные пользователя
+  useEffect(() => {
+    if (loggedIn) {
+      mainApi.getUserInfo()
+        .then((userData) => {
+          setCurrentUser(userData);
+        })
+        .catch(err => { console.log(err) });
+    }
+  }, [loggedIn]);
+
+
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    // if (!jwt) {
-    //   // history.push("/");
-    //   return;
-    // }
+    if (!jwt) {
+      localStorage.clear();
+      // history.push("/");
+      return;
+    }
     auth.checkToken(jwt)
       .then((res) => {
         setCurrentUser(res);
         setLoggedIn(true);
-        
-        // history.push("/");
+
+        // history.push('/');
       })
-      .catch(console.dir)
+      .catch((err) => {
+        setIsInfoTooltipPopupOpen(true);
+        setIsSuccess(false);
+        localStorage.clear();
+        console.log(err);
+        history.push("/");
+      })
   }, [history]);
 
   // Регистрация пользователя
@@ -108,31 +126,19 @@ function App() {
       })
   };
 
-  // Получить данные пользователя
-  useEffect(() => {
-    if (isLoggedIn) {
-      mainApi.getUserInfo()
-        .then((userData) => {
-          setCurrentUser(userData);
-        })
-        .catch(err => { console.log(err) });
-    }
-  }, [isLoggedIn]);
-
-
   // Редактирование пользователя
   function handleUpdateUser(data) {
     mainApi.editUserInfo(data.name, data.email)
-    .then((res) => {
-      setCurrentUser(res);
-      setIsInfoTooltipPopupOpen(true);
-      setIsSuccess(true);
-    })
-    .catch((err) => {
-      setIsInfoTooltipPopupOpen(true);
-      setIsSuccess(false);
-      console.log(err);
-    })
+      .then((res) => {
+        setCurrentUser(res);
+        setIsInfoTooltipPopupOpen(true);
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        setIsInfoTooltipPopupOpen(true);
+        setIsSuccess(false);
+        console.log(err);
+      })
   }
 
   // Выход из аккаунта пользователя
@@ -146,24 +152,24 @@ function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn && localStorage.getItem('filteredMovies')) {
+    if (localStorage.getItem('filteredMovies')) {
       const initialSearch = JSON.parse(localStorage.getItem('filteredMovies'));
       const searchResult = findMovie(initialSearch, searchValue, checkboxValue);
       setFilteredMovies(searchResult);
     }
-  }, [isLoggedIn, searchValue, checkboxValue])
+  }, [searchValue, checkboxValue])
 
 
-  // Загрузка сохраненных карточек пользователя в localstorage
+  // Загрузка сохраненных карточек пользователя
   useEffect(() => {
-    if (isLoggedIn) {
+    if (loggedIn) {
       mainApi.getSavedMovies()
         .then((savedMovies) => {
           setSavedMovies(savedMovies);
         })
         .catch(err => { console.log(err) });
     }
-  }, [isLoggedIn]);
+  }, [loggedIn]);
 
   function handleSearchMovie(searchValue, checkboxValue) {
     setSearchValue(searchValue);
@@ -272,11 +278,15 @@ function App() {
     setRenderedMovies(renderedMovies + number);
   }
 
-  return (
-    <div className="page">
-      <CurrentUserContext.Provider value={currentUser}>
+  console.log(loggedIn);
 
-        <Header isLoggedIn={isLoggedIn} />
+  return (
+
+    <CurrentUserContext.Provider value={currentUser}>
+
+      <div className="page">
+
+        <Header loggedIn={loggedIn} />
 
         <main className="main">
 
@@ -287,18 +297,24 @@ function App() {
             </Route>
 
             <Route path="/signup">
-              <Register onRegister={onRegister} />
+              {!loggedIn ?
+                (<Register onRegister={onRegister} />)
+                :
+                (<Redirect to="/" />)}
             </Route>
 
             <Route path="/signin">
-              <Login onLogin={onLogin} />
+              {!loggedIn ?
+                (<Login onLogin={onLogin} />)
+                :
+                (<Redirect to="/" />)}
             </Route>
 
             <ProtectedRoute
-              currentUser={currentUser}
               path="/movies"
-              loggedIn={isLoggedIn}
               component={Movies}
+              loggedIn={loggedIn}
+              currentUser={currentUser}
               movies={filteredMovies}
               renderedMovies={renderedMovies}
               onSave={handleSaveMovie}
@@ -313,8 +329,8 @@ function App() {
 
             <ProtectedRoute
               path="/saved-movies"
-              loggedIn={isLoggedIn}
               component={SavedMovies}
+              loggedIn={loggedIn}
               movies={savedMovies}
               onDelete={handleDeleteMovie}
               onSearch={handleSearchMovie}
@@ -326,7 +342,7 @@ function App() {
             <ProtectedRoute
               path="/profile"
               component={Profile}
-              loggedIn={isLoggedIn}
+              loggedIn={loggedIn}
               onUpdateUser={handleUpdateUser}
               onLogout={onLogout}
             />
@@ -342,15 +358,14 @@ function App() {
         {location.pathname === "/" || location.pathname === "/movies" || location.pathname === "/saved-movies" ?
           <Footer /> : ''}
 
-      </CurrentUserContext.Provider>
+        <InfoTooltip
+          isOpen={isInfoTooltipPopupOpen}
+          onClose={closeAllPopups}
+          isSuccess={isSuccess}
+        />
 
-      <InfoTooltip
-        isOpen={isInfoTooltipPopupOpen}
-        onClose={closeAllPopups}
-        isSuccess={isSuccess}
-      />
-
-    </div >
+      </div >
+    </CurrentUserContext.Provider>
   );
 }
 
