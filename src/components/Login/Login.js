@@ -20,11 +20,9 @@ function Login({ onLogin }) {
   return (
     <section className="register">
       <div className="register__container">
-        <img
-          src={headerLogo}
-          className="register__logo"
-          alt="Логотип"
-        />
+        <Link to='/' className="register__logo">
+          <img src={headerLogo} alt="Логотип" />
+        </Link>
         <h2 className="register__title">Рады видеть!</h2>
         <form className="register__form" onSubmit={handleSubmit}>
           <fieldset className="register__fieldset">

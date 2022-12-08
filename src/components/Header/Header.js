@@ -12,7 +12,6 @@ export default function Header({ isLoggedIn }) {
   const [isActive, setIsActive] = useState(false);
 
   function handleLogin() {
-
     history.push("/signin");
   }
 

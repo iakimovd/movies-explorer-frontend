@@ -61,15 +61,16 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    if (!jwt) {
-      history.push("/");
-      return;
-    }
+    // if (!jwt) {
+    //   // history.push("/");
+    //   return;
+    // }
     auth.checkToken(jwt)
       .then((res) => {
-        setLoggedIn(true);
         setCurrentUser(res);
-        history.push("/movies");
+        setLoggedIn(true);
+        
+        // history.push("/");
       })
       .catch(console.dir)
   }, [history]);
