@@ -43,7 +43,7 @@ function MoviesCard({ movie, isLiked, onSave, onDelete }) {
 
         }
         {location.pathname === '/saved-movies' && (
-          <button className='movies-card__like-button_active' onClick={handleDislikeClick}></button>
+          <button className='movies-card__like-button_delete-card' onClick={handleDislikeClick}></button>
         )}
       </div>
     </li>

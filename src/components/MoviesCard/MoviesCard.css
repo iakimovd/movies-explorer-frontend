@@ -94,6 +94,24 @@
   transition: 0.5s ease-in-out;
 }
 
+.movies-card__like-button_delete-card {
+  background-image: url(../../images/delete-card-button.svg);
+  border: none;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(34, 34, 34, 1);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-position-y: 2px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.movies-card:hover .movies-card__like-button_delete-card {
+  opacity: 1;
+}
+
 .movies-card__like-button_active:hover {
   opacity: 0.5;
   transition: 0.5s ease-in-out;
