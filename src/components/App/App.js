@@ -122,11 +122,16 @@ function App() {
   // Редактирование пользователя
   function handleUpdateUser(data) {
     mainApi.editUserInfo(data.name, data.email)
-      .then((res) => {
-        setCurrentUser(res);
-        closeAllPopups();
-      })
-      .catch(err => { console.log(err) });
+    .then((res) => {
+      setCurrentUser(res);
+      setIsInfoTooltipPopupOpen(true);
+      setIsSuccess(true);
+    })
+    .catch((err) => {
+      setIsInfoTooltipPopupOpen(true);
+      setIsSuccess(false);
+      console.log(err);
+    })
   }
 
   // Выход из аккаунта пользователя
