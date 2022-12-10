@@ -26,22 +26,6 @@ function SearchForm({ onSearch }) {
     }
   }, [location.pathname]);
 
-  useEffect(() => {
-    if (location.pathname === '/saved-movies') {
-
-      const checkbox = localStorage.getItem('checkboxValue');
-      const search = localStorage.getItem('searchValue');
-
-      if (search) {
-        setSearchValue(search);
-      }
-      if (checkbox === true) {
-        setCheckboxValue(true);
-      } else {
-        setCheckboxValue(false);
-      }
-    }
-  }, [location.pathname]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -59,7 +43,6 @@ function SearchForm({ onSearch }) {
   function toggleCheckbox(checkboxValue) {
     setCheckboxValue(checkboxValue);
     onSearch(searchValue, checkboxValue);
-    console.log(checkboxValue);
   }
 
   function handleCheckbox(evt) {

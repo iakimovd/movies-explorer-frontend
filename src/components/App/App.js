@@ -22,7 +22,6 @@ import './App.css';
 
 function App() {
 
-
   // Массив фильмов
   const [initialMovies, setInitialMovies] = useState([]);
 
@@ -39,7 +38,7 @@ function App() {
   const [number, setNumber] = useState(0);
   const [renderedMovies, setRenderedMovies] = useState(0);
 
-  // Параметры запроса, текст и состояние чекбокса
+  // Параметры запроса: текст и состояние чекбокса
   const [searchValue, setSearchValue] = useState('');
   const [checkboxValue, setCheckboxValue] = useState(false);
 
@@ -55,41 +54,44 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isSuccess, setIsSuccess] = useState(null);
 
+  // const [isNotChecked, setIsNotChecked] = useState(true);
+
   const history = useHistory();
   const location = useLocation();
 
   // Получить данные пользователя
   useEffect(() => {
     if (loggedIn) {
+
       mainApi.getUserInfo()
         .then((userData) => {
           setCurrentUser(userData);
         })
-        .catch(err => { console.log(err) });
+        .catch(err => { console.log(err) })
+
     }
   }, [loggedIn]);
 
+  // console.log(loggedIn);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
-      localStorage.clear();
-      // history.push("/");
       return;
     }
     auth.checkToken(jwt)
       .then((res) => {
         setCurrentUser(res);
         setLoggedIn(true);
-
         // history.push('/');
       })
       .catch((err) => {
+        history.push("/");
         setIsInfoTooltipPopupOpen(true);
         setIsSuccess(false);
         localStorage.clear();
         console.log(err);
-        history.push("/");
+
       })
   }, [history]);
 
@@ -208,12 +210,13 @@ function App() {
     }
   }, [initialMovies, searchValue, checkboxValue]);
 
+
   // Функция поиска фильмов
-  function findMovie(movies, searchValue, checkboxStatus) {
+  function findMovie(movies, searchValue, checkboxValue) {
     let shortsFilter = movies;
     let result;
 
-    if (checkboxStatus) {
+    if (checkboxValue) {
       shortsFilter = shortsFilter.filter((movie) => movie.duration <= 40);
     }
 
@@ -222,7 +225,6 @@ function App() {
     })
     return result;
   }
-
 
   // Сохранение фильма
   const handleSaveMovie = (movie) => {
@@ -254,7 +256,7 @@ function App() {
       .then(() => {
         const updatedSavedMovies = savedMovies.filter((data) => data._id !== movie._id);
         setSavedMovies(updatedSavedMovies);
-        localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
+        // localStorage.setItem("savedMovies", JSON.stringify(updatedSavedMovies));
       })
       .catch((err) => {
         console.log(err);
@@ -278,7 +280,6 @@ function App() {
     setRenderedMovies(renderedMovies + number);
   }
 
-  console.log(loggedIn);
 
   return (
 
@@ -333,7 +334,7 @@ function App() {
               loggedIn={loggedIn}
               movies={savedMovies}
               onDelete={handleDeleteMovie}
-              onSearch={handleSearchMovie}
+              // onSearch={handleSearchSavedMovie}
               isLiked={isLiked}
             // checkboxValue={checkboxValue}
             // onChangeCheckbox={onChangeCheckbox}

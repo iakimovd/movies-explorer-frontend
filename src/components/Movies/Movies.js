@@ -6,6 +6,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 
 function Movies({ movies, renderedMovies, showMoreMovies, isLiked, isLoading, onSave, onDelete, onSearch, checkboxValue, onChangeCheckbox }) {
+
   return (
     <main className="movies">
       <SearchForm onSearch={onSearch} checkboxValue={checkboxValue} onChangeCheckbox={onChangeCheckbox} />
