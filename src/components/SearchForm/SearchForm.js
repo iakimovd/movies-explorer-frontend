@@ -12,13 +12,14 @@ function SearchForm({ onSearch }) {
   useEffect(() => {
     if (location.pathname === '/movies') {
 
-      const checkbox = localStorage.getItem('checkboxValue');
       const search = localStorage.getItem('searchValue');
+      const checkbox = localStorage.getItem('checkboxValue');
 
       if (search) {
         setSearchValue(search);
       }
-      if (checkbox === true) {
+      if (JSON.parse(checkbox) === true) {
+        console.log(checkbox);
         setCheckboxValue(true);
       } else {
         setCheckboxValue(false);

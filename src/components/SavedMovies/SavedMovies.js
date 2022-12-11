@@ -37,6 +37,7 @@ function SavedMovies({ movies, isLiked, onSave, onDelete, onSearch }) {
     setIsSearchDone(true);
   }
 
+
   useEffect(() => {
     if (filteredMovies.length > 0) {
       const searchResult = findMovie(movies, searchValue, checkboxValue);

@@ -16,6 +16,7 @@ import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import Preloader from "../Preloader/Preloader";
 import * as auth from '../../utils/Auth';
 import useWindowSize from '../../hooks/useWindowSize';
 import './App.css';
@@ -54,7 +55,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isSuccess, setIsSuccess] = useState(null);
 
-  // const [isNotChecked, setIsNotChecked] = useState(true);
+  const [isNotChecked, setIsNotChecked] = React.useState(true);
 
   const history = useHistory();
   const location = useLocation();
@@ -72,11 +73,13 @@ function App() {
     }
   }, [loggedIn]);
 
-  // console.log(loggedIn);
+  console.log(loggedIn);
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
+      setIsNotChecked(false);
+      localStorage.clear();
       return;
     }
     auth.checkToken(jwt)
@@ -91,9 +94,11 @@ function App() {
         setIsSuccess(false);
         localStorage.clear();
         console.log(err);
-
       })
-  }, [history]);
+      .finally(() => {
+        setIsNotChecked(false);
+      })
+  }, [history, isNotChecked]);
 
   // Регистрация пользователя
   const onRegister = ({ name, email, password }) => {
@@ -145,9 +150,8 @@ function App() {
 
   // Выход из аккаунта пользователя
   const onLogout = () => {
-    // setCurrentUser({});
-    setCurrentUser(null);
     setLoggedIn(false);
+    setCurrentUser(null);
     localStorage.clear();
     localStorage.removeItem('jwt');
     history.push("/");
@@ -242,11 +246,11 @@ function App() {
   }
 
   const isLiked = (data) => {
-    return savedMovies.some(i => i.movieId === data.id && i.owner === currentUser._id);
+    return savedMovies.some(i => i.movieId === data.id && i.owner === currentUser?._id);
     // return savedMovies.some(i => i.movieId === data.id && i.movieId === data._id && i.owner === currentUser._id)
   }
 
-  function closeAllPopups() {
+   function closeAllPopups() {
     setIsInfoTooltipPopupOpen(false);
   }
 
@@ -280,6 +284,9 @@ function App() {
     setRenderedMovies(renderedMovies + number);
   }
 
+  if (isNotChecked) {
+    return (<Preloader />);
+  };
 
   return (
 
@@ -301,14 +308,14 @@ function App() {
               {!loggedIn ?
                 (<Register onRegister={onRegister} />)
                 :
-                (<Redirect to="/" />)}
+                (<Redirect to="/movies" />)}
             </Route>
 
             <Route path="/signin">
               {!loggedIn ?
                 (<Login onLogin={onLogin} />)
                 :
-                (<Redirect to="/" />)}
+                (<Redirect to="/movies" />)}
             </Route>
 
             <ProtectedRoute
