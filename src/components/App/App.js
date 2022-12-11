@@ -63,13 +63,11 @@ function App() {
   // Получить данные пользователя
   useEffect(() => {
     if (loggedIn) {
-
       mainApi.getUserInfo()
         .then((userData) => {
           setCurrentUser(userData);
         })
         .catch(err => { console.log(err) })
-
     }
   }, [loggedIn]);
 
@@ -86,7 +84,6 @@ function App() {
       .then((res) => {
         setCurrentUser(res);
         setLoggedIn(true);
-        // history.push('/');
       })
       .catch((err) => {
         history.push("/");
@@ -154,6 +151,10 @@ function App() {
     setCurrentUser(null);
     localStorage.clear();
     localStorage.removeItem('jwt');
+    setInitialMovies([]);
+    setFilteredMovies([]);
+    setSavedMovies([]);
+    setSearchValue([]);
     history.push("/");
   };
 
