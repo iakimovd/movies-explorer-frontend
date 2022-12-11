@@ -60,6 +60,19 @@ function App() {
   const history = useHistory();
   const location = useLocation();
 
+  // Выход из аккаунта пользователя
+  const onLogout = () => {
+    setLoggedIn(false);
+    setCurrentUser(null);
+    localStorage.clear();
+    localStorage.removeItem('jwt');
+    setInitialMovies([]);
+    setFilteredMovies([]);
+    setSavedMovies([]);
+    setSearchValue([]);
+    history.push("/");
+  };
+
   // Получить данные пользователя
   useEffect(() => {
     if (loggedIn) {
@@ -77,7 +90,8 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     if (!jwt) {
       setIsNotChecked(false);
-      localStorage.clear();
+      onLogout();
+      // localStorage.clear();
       return;
     }
     auth.checkToken(jwt)
@@ -86,10 +100,11 @@ function App() {
         setLoggedIn(true);
       })
       .catch((err) => {
-        history.push("/");
+        onLogout();
+        // history.push("/");
         setIsInfoTooltipPopupOpen(true);
         setIsSuccess(false);
-        localStorage.clear();
+        // localStorage.clear();
         console.log(err);
       })
       .finally(() => {
@@ -145,18 +160,6 @@ function App() {
       })
   }
 
-  // Выход из аккаунта пользователя
-  const onLogout = () => {
-    setLoggedIn(false);
-    setCurrentUser(null);
-    localStorage.clear();
-    localStorage.removeItem('jwt');
-    setInitialMovies([]);
-    setFilteredMovies([]);
-    setSavedMovies([]);
-    setSearchValue([]);
-    history.push("/");
-  };
 
   useEffect(() => {
     if (localStorage.getItem('filteredMovies')) {
@@ -251,7 +254,7 @@ function App() {
     // return savedMovies.some(i => i.movieId === data.id && i.movieId === data._id && i.owner === currentUser._id)
   }
 
-   function closeAllPopups() {
+  function closeAllPopups() {
     setIsInfoTooltipPopupOpen(false);
   }
 
