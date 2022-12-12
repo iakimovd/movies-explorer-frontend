@@ -77,6 +77,11 @@ export default function Header({ loggedIn }) {
                 <button className="header__account-button"></button>
               </div>
 
+              <button className="header__burger-menu-button"
+                type="button"
+                onClick={handleBurgerButton}>
+              </button>
+              {isActive ? <Navigation handleBurgerButton={handleBurgerButton} /> : ''}
             </div>
           </header>)
         )}

@@ -149,7 +149,7 @@
 .header__burger-menu-button {
   padding: 0;
   background-image: url(../../images/menu-button.svg);
-  background-color: rgba(32, 32, 32, 1);
+  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   border: none;
