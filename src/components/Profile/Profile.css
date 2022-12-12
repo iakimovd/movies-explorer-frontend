@@ -79,6 +79,16 @@
   text-decoration: none;
 }
 
+.profile__error {
+  max-width: 260px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ee3465;
+}
+
 .profile__edit-button {
   font-family: "Inter";
   font-style: normal;
@@ -98,6 +108,16 @@
 .profile__edit-button:hover {
   opacity: 0.5;
   transition: 0.5s ease-in-out;
+}
+
+.profile__edit-button_disabled {
+  color: grey;
+}
+
+.profile__edit-button_disabled:hover {
+  cursor: default;
+  opacity: 1;
+  transition: none;
 }
 
 .profile__logout-link {

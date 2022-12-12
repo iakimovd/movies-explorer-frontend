@@ -1,4 +1,4 @@
-export class Api {
+export class MainApi {
   constructor({ baseUrl, headers }) {
     this._url = baseUrl;
     this._headers = headers;
@@ -36,78 +36,69 @@ export class Api {
       .then(this._returnFetchResult);
   }
 
-  getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+  getSavedMovies() {
+    return fetch(`${this._url}/movies`, {
       method: 'GET',
       headers: this._injectBearerToken(this._headers),
     })
       .then(this._returnFetchResult);
   }
 
-  editUserInfo(userName, userInfo) {
+  editUserInfo(userName, userEmail) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._injectBearerToken(this._headers),
       body: JSON.stringify({
         name: userName,
-        about: userInfo
+        email: userEmail
       })
     })
       .then(this._returnFetchResult);
   }
 
-  addUserCard(data) {
-    return fetch(`${this._url}/cards`, {
+  addMovie(data) {
+    return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: this._injectBearerToken(this._headers),
       body: JSON.stringify({
-        name: data.name,
-        link: data.link
+        country: data.country,
+        director: data.director,
+        duration: data.duration,
+        year: data.year,
+        description: data.description,
+        image: `https://api.nomoreparties.co/${data.image.url}`,
+        trailerLink: data.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${data.image.formats.thumbnail.url}`,
+        movieId: data.id,
+        nameRU: data.nameRU,
+        nameEN: data.nameEN,
       })
     })
       .then(this._returnFetchResult);
   }
 
-  changeLikeCardStatus(id, isLiked) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
-      method: (isLiked ? "PUT" : "DELETE"),
-      headers: this._injectBearerToken(this._headers),
-    })
-      .then(this._returnFetchResult);
-  }
-
-  deleteCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
+  deleteMovie(id) {
+    return fetch(`${this._url}/movies/${id}`, {
       method: 'DELETE',
       headers: this._injectBearerToken(this._headers),
     })
       .then(this._returnFetchResult);
   }
-
-  editAvatar(data) {
-    return fetch(`${this._url}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: this._injectBearerToken(this._headers),
-      body: JSON.stringify({
-        avatar: data,
-      })
-    })
-      .then(this._returnFetchResult);
-  }
 }
 
-// const api = new Api({
-//   baseUrl: 'https://api.mesto.project.nomoredomains.icu',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   }
-// });
 
-const api = new Api({
-  baseUrl: 'http://localhost:4000',
+const mainApi = new MainApi({
+  baseUrl: 'https://api.diplom.movies.nomoredomains.icu',
   headers: {
     'Content-Type': 'application/json'
   }
 });
 
-export default api;
+// const mainApi = new MainApi({
+//   baseUrl: 'http://localhost:4000',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   }
+// });
+
+export default mainApi;

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.mesto.project.nomoredomains.icu";
+export const BASE_URL = "https://api.diplom.movies.nomoredomains.icu";
 // export const BASE_URL = "http://localhost:4000";
 
 const returnFetchResult = (res) => {
@@ -9,14 +9,14 @@ const returnFetchResult = (res) => {
   };
 };
 
-export const register = ({ email, password }) => {
+export const register = ({ name, email, password }) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ name, email, password }),
   })
     .then((res) => {
       return returnFetchResult(res);
@@ -46,7 +46,7 @@ export const checkToken = (token) => {
       'Authorization': `Bearer ${token}`,
     }
   })
-  .then((res) => {
-    return returnFetchResult(res);
-  });
+    .then((res) => {
+      return returnFetchResult(res);
+    });
 }
